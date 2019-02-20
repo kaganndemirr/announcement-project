@@ -1,0 +1,15 @@
+# virtualenv
+.venv
+venv/
+ENV/
+env/
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+
+# mkdocs documentation
+docs_build/

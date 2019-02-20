@@ -1,0 +1,8 @@
+site_name: Announcements
+site_dir: docs_build
+use_directory_urls: false
+
+nav:
+    - Home: index.md
+    - Backend:
+      - Development: backend/development.md
