@@ -60,7 +60,22 @@ env\Scripts\activate
 pip3 install -r requirements/base.txt
 ```
 
-**Run project**
+**Migrate database on linux**
+```bash
+./manage.py migrate
+```
+
+**Migrate database on windows**
+```bash
+python manage.py migrate
+```
+
+**Run project on linux**
 ```bash
 ./manage.py runserver 0.0.0.0:8000
+```
+
+**Run project on windows**
+```bash
+python manage.py runserver 0.0.0.0:8000
 ```
