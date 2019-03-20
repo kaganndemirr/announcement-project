@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load i18n staticfiles %}
+
+{% block title%}
+
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+{% block content %}
+<div>
+    {% if domain_documentation %}
+        <a href="{{ domain_documentation }}">
+          <button class="login-button">{% trans "Documentation" %}</button>
+        </a>
+    {% endif %}
+</div>
+{% endblock %}

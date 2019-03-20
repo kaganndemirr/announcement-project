@@ -15,7 +15,7 @@ import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 PACKAGE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(PACKAGE_ROOT)
 
 sys.path.append(PACKAGE_ROOT + '/apps')
 
@@ -63,7 +63,7 @@ ROOT_URLCONF = 'announcement.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(PACKAGE_ROOT, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -112,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'tr-TR'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Europe/Istanbul'
 
@@ -127,3 +127,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(PACKAGE_ROOT, 'static/')
+
+# Documentation Root
+DOCUMENTATION_URL = "/docs_build/"
+DOCUMENTATION_ROOT = os.path.join(BASE_DIR, 'docs_build/')
