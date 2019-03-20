@@ -3,6 +3,9 @@
 venv/
 ENV/
 env/
+.env\
+env/
+env\
 
 ### Django ###
 *.log
@@ -13,3 +16,7 @@ db.sqlite3
 
 # mkdocs documentation
 docs_build/
+
+# Pycharm
+.idea/
+.idea\
