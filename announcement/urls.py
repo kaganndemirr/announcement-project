@@ -26,6 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Documentation
-    re_path('^docs/$', DocumentationView.as_view(), name='docs'),
-    re_path('^docs/(?P<path>.*)$', DocumentationView.as_view(), name='docs'),
+    re_path('^documentations/$', DocumentationView.as_view(), name='documentation'),
+    re_path('^documentations/(?P<path>.*)$', DocumentationView.as_view(), name='documentation'),
 ]

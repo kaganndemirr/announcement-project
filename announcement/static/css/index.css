@@ -6,11 +6,6 @@ body {
   background-image: linear-gradient(yellow, green, yellow);
 }
 
-.logo {
-  display: block;
-  margin: 50px auto;
-}
-
 #link-area {
   text-align: center;
 }
