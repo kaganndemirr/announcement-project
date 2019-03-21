@@ -2,7 +2,7 @@
 
 {% load i18n staticfiles %}
 
-{% block title%}Index | {{block.super }}{% endblock %}
+{% block title%}{{block.super }}{% endblock %}
 
 {% block style %}
     {{ block.super }}
@@ -17,6 +17,6 @@
           <button class="login-button">{% trans "Documentation" %}</button>
         </a>
     {% endif %}
-    </div>
+  </div>
 </div>
 {% endblock %}

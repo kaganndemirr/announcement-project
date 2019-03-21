@@ -41,11 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'announcement',
 
     # Internal Applications
-    'announcement.apps.users',
-    'announcement.apps.classes',
-    'announcement.apps.departures'
+    'users',
+    'classes',
+    'departures'
 ]
 
 MIDDLEWARE = [
