@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     # Internal Applications
     'users',
     'classes',
-    'departures'
+    'departments'
 ]
 
 MIDDLEWARE = [
