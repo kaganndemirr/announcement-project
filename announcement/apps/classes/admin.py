@@ -6,9 +6,9 @@ from .models import Lecture, Exam
 
 @admin.register(Lecture)
 class LectureAdmin(admin.ModelAdmin):
-    fields = ('l_code', 'title', 'lecturer', 'l_date')
+    fields = ('department', 'l_code', 'title', 'lecturer', 'l_date')
 
-    list_display = ('l_code', 'title', 'lecturer', 'l_date')
+    list_display = ('department', 'l_code', 'title', 'lecturer', 'l_date')
 
 
 @admin.register(Exam)

@@ -8,6 +8,6 @@ SITUATIONS = (
 
 TYPES = (
     (VIDEO, 'Video'),
-    (PICTURE, 'Pıcture'),
+    (PICTURE, 'Picture'),
     (TEXT, 'Text')
 )
