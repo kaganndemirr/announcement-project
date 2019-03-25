@@ -12,7 +12,7 @@ class IndexView(TemplateView):
         context = super(IndexView, self).get_context_data(**kwargs)
 
         context.update({
-            'domain_documentation': '/documentations/',
+            'domain_documentation': '/documentation/',
         })
 
         return context

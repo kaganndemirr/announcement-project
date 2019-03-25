@@ -1,25 +1,25 @@
 html {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  background-image: linear-gradient(yellow, green, yellow);
+    background-image: linear-gradient(yellow, green, yellow);
 }
 
 #link-area {
-  text-align: center;
+    text-align: center;
 }
 
 .login-button {
-  width: 240px;
-  height: 60px;
-  border-radius: 5px;
-  border: solid 1px #ffffff;
-  background-color: Transparent;
-  background-repeat: no-repeat;
-  outline: none;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 20px;
-  margin: 10px 10px 10px 10px;
+    width: 240px;
+    height: 60px;
+    border-radius: 5px;
+    border: solid 1px #ffffff;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    outline: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px 10px 10px 10px;
 }
