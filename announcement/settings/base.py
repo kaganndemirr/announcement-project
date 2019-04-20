@@ -25,6 +25,8 @@ sys.path.append(PACKAGE_ROOT + '/apps')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'b7#cxkbwagk(dq7$a%@&=qi+o+n&+@q#9&#oee71n7n5uollkm'
 
+AUTH_USER_MODEL = 'users.User'
+
 # Application definition
 
 INSTALLED_APPS = [
