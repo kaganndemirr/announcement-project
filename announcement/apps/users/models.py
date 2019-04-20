@@ -14,18 +14,23 @@ class User(AbstractBaseUser, PermissionsMixin):
 	# Base
 	first_name = models.CharField(verbose_name=_('First Name'), max_length=50)
 	last_name = models.CharField(verbose_name=_('Last Name'), max_length=50)
+	email = models.EmailField(
+        verbose_name=_('Email'), max_length=255, blank=True, null= True,
+		unique=True
+    )
 	department = models.ForeignKey(verbose_name=_('Department'), to='departments.Department',
 		on_delete=models.CASCADE, null=True, blank=False
 	)
-	student_id = models.IntegerField(unique=True)
 
 	# Permisssions
-	is_student = models.BooleanField(verbose_name=('Student'), default=True)
 	is_staff = models.BooleanField(verbose_name=('Staff'), default=False)
+	is_active = models.BooleanField(verbose_name=_('Active'), default=True)
+	is_verified = models.BooleanField(verbose_name=_('Verified'), default=False)
 
 	objects = UserManager()
 
-	USERNAME_FIELD = 'student_id'
+	USERNAME_FIELD = 'email'
+	REQUIRED_FIELDS = ['first_name', 'last_name']
 
 
 	class Meta:
@@ -39,5 +44,3 @@ class User(AbstractBaseUser, PermissionsMixin):
 		return '{first_name} {last_name}'.format(first_name=self.first_name,
 		last_name=self.last_name
 	)
-
-	
