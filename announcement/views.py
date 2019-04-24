@@ -24,3 +24,7 @@ class DocumentationView(View):
         return serve(
             request, path, document_root=settings.DOCUMENTATION_ROOT, **kwargs
         )
+
+
+class LandingView(TemplateView):
+    template_name = 'landing.html'
