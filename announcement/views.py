@@ -1,5 +1,6 @@
 # Django
 
+from django.http import JsonResponse
 from django.conf import settings
 from django.views.generic import View, TemplateView
 from django.views.static import serve
@@ -26,5 +27,19 @@ class DocumentationView(View):
         )
 
 
-class LandingView(TemplateView):
-    template_name = 'landing.html'
+class MainView(TemplateView):
+    template_name = 'main.html'
+
+class AjaxResponse(View):
+    def get(self, request):
+        # request.GET['param']
+        data =  dict()
+        data['boring'] = 'map'
+        return JsonResponse(data)
+
+class AjaxWeather(View):
+    def get(self, request):
+        # request.GET['param']
+        data =  dict()
+        data['Trabzon'] = 'Yağışlı'
+        return JsonResponse(data)
