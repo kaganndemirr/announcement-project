@@ -21,7 +21,7 @@ class DeparmentAdmin(admin.ModelAdmin):
 
 @admin.register(Content)
 class ContentAdmin(admin.ModelAdmin):
-    fields = ('creation_time', 'department', 'title', 'data', 'type', 'status')
+    fields = ('creation_time', 'title', 'data', 'type', 'status')
 
     list_display = ('creation_time', 'department', 'title', 'data', 'type', 'status')
 
@@ -31,10 +31,14 @@ class ContentAdmin(admin.ModelAdmin):
             return qs
         return qs.filter(department=request.user.department)
 
+    def save_model(self, request, obj, form, change):
+        obj.department = request.user.department
+        super().save_model(request, obj, form, change)
+
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    fields = ('date', 'department', 'name', 'location')
+    fields = ('date', 'name', 'location')
 
     list_display = ('date', 'department', 'name', 'location')
 
@@ -44,10 +48,14 @@ class EventAdmin(admin.ModelAdmin):
             return qs
         return qs.filter(department=request.user.department)
 
+    def save_model(self, request, obj, form, change):
+        obj.department = request.user.department
+        super().save_model(request, obj, form, change)
+
 
 @admin.register(Announcement)
 class AnnouncementAdmin(admin.ModelAdmin):
-    fields = ('creation_date', 'department', 'title')
+    fields = ('creation_date', 'title')
 
     list_display = ('creation_date', 'department', 'title')
 
@@ -56,3 +64,7 @@ class AnnouncementAdmin(admin.ModelAdmin):
         if request.user.is_superuser:
             return qs
         return qs.filter(department=request.user.department)
+
+    def save_model(self, request, obj, form, change):
+        obj.department = request.user.department
+        super().save_model(request, obj, form, change)

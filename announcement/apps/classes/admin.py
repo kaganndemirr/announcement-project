@@ -6,7 +6,7 @@ from .models import Lecture, Exam
 
 @admin.register(Lecture)
 class LectureAdmin(admin.ModelAdmin):
-    fields = ('department', 'l_code', 'title', 'lecturer', 'l_date')
+    fields = ('l_code', 'title', 'lecturer', 'l_date')
 
     list_display = ('department', 'l_code', 'title', 'lecturer', 'l_date')
 
@@ -15,6 +15,10 @@ class LectureAdmin(admin.ModelAdmin):
         if request.user.is_superuser:
             return qs
         return qs.filter(department=request.user.department)
+
+    def save_model(self, request, obj, form, change):
+        obj.department = request.user.department
+        super().save_model(request, obj, form, change)
 
 
 @admin.register(Exam)
