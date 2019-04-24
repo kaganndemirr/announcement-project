@@ -28,3 +28,6 @@ class DocumentationView(View):
 
 class LandingView(TemplateView):
     template_name = 'landing.html'
+
+class MainView(TemplateView):
+    template_name = 'main.html'

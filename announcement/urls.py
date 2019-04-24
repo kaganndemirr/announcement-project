@@ -16,11 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 
-from announcement.views import IndexView, DocumentationView, LandingView
+from announcement.views import IndexView, DocumentationView, LandingView, MainView
 
 urlpatterns = [
     # Pages
-    re_path('^$', LandingView.as_view(), name='landing'),
+    re_path('^$', MainView.as_view(), name='main'),
     re_path('^index/$', IndexView.as_view(), name='index'),
 
     # Admin
