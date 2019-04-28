@@ -8,7 +8,8 @@ from django.utils.translation import ugettext_lazy as _
 
 class Lecture(models.Model):
     department = models.ForeignKey(
-        verbose_name=_('Department'), to='departments.Department', on_delete=models.CASCADE, null=True, blank=False
+        verbose_name=_('Department'), to='departments.Department',
+        on_delete=models.CASCADE, null=True, blank=True, editable=False
     )
     l_code = models.CharField(verbose_name='Code', max_length=10, unique=True)
     title = models.CharField(verbose_name='Lecture Name', max_length=30)

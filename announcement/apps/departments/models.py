@@ -22,7 +22,10 @@ class Department(models.Model):
 
 
 class Content(models.Model):
-    department = models.ForeignKey(verbose_name='Department', to='departments.Department', on_delete=models.CASCADE)
+    department = models.ForeignKey(
+        verbose_name='Department', to='departments.Department',
+        on_delete=models.CASCADE, null=True, blank=True, editable=False
+    )
     title = models.CharField(verbose_name='Content Name', max_length=30)
     status = models.SmallIntegerField(verbose_name='Status', choices=SITUATIONS)
     creation_time = models.DateTimeField(verbose_name=_('Creation Time'), default=datetime.now())
@@ -38,7 +41,10 @@ class Content(models.Model):
 
 
 class Event(models.Model):
-    department = models.ForeignKey(verbose_name='Department', to='departments.Department', on_delete=models.CASCADE)
+    department = models.ForeignKey(
+        verbose_name='Department', to='departments.Department',
+        on_delete=models.CASCADE, null=True, blank=True, editable=False
+    )
     date = models.DateTimeField(verbose_name=_('Date'), default=datetime.now())
     location = models.CharField(verbose_name='Location', max_length=100)
     name = models.CharField(verbose_name='Name', max_length=30)
@@ -52,7 +58,10 @@ class Event(models.Model):
 
 
 class Announcement(models.Model):
-    department = models.ForeignKey(verbose_name='Department', to='departments.Department', on_delete=models.CASCADE)
+    department = models.ForeignKey(
+        verbose_name='Department', to='departments.Department',
+        on_delete=models.CASCADE, null=True, blank=True, editable=False
+    )
     creation_date = models.DateTimeField(verbose_name=_('Creation Time'), default=datetime.now())
     title = models.CharField(verbose_name='Title', max_length=30)
 
@@ -62,4 +71,3 @@ class Announcement(models.Model):
 
     def __str__(self):
         return '{title}'.format(title=self.title)
-
