@@ -32,3 +32,8 @@ class ExamAdmin(admin.ModelAdmin):
         if request.user.is_superuser:
             return qs
         return qs.filter(lecture__department=request.user.department)
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(ExamAdmin, self).get_form(request, obj, **kwargs)
+        form.base_fields['lecture']._queryset = Lecture.objects.filter(department=request.user.department)
+        return form
