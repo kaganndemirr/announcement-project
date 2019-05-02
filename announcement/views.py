@@ -58,13 +58,13 @@ class AjaxLectures(View):
 class AjaxExams(View):
     def get(self, request):
         data = Exam.objects.filter(lecture__department=request.user.department,
-            e_date__date=date.today() + + timedelta(days=1)).order_by('e_date').values()
+            e_date__date=date.today() + timedelta(days=1)).order_by('e_date').values()
         return JsonResponse({"exams": list(data)})
 
 class AjaxEvents(View):
     def get(self, request):
         data = Event.objects.filter(department=request.user.department,
-            date__date=date.today() + + timedelta(days=1)).order_by('date').values()
+            date__date=date.today() + timedelta(days=1)).order_by('date').values()
         return JsonResponse({"events": list(data)})
 
 class AjaxWeather(View):
