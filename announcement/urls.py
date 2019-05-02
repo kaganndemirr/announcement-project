@@ -24,12 +24,12 @@ urlpatterns = [
     re_path('^index/$', views.IndexView.as_view(), name='index'),
 
     # Ajax
-    path('ajax/slides', views.AjaxResponse.as_view(), name='slides'),
-    path('ajax/announcements', views.AjaxResponse.as_view(), name='announcements'),
-    path('ajax/lectures', views.AjaxResponse.as_view(), name='lectures'),
-    path('ajax/exams', views.AjaxResponse.as_view(), name='exams'),
-    path('ajax/events', views.AjaxResponse.as_view(), name='events'),
-    path('ajax/weather', views.AjaxWeather.as_view(), name='weather'),
+    path('ajax/contents', views.AjaxContents.as_view(), name='slides'),
+    path('ajax/announcements', views.AjaxAnnouncement.as_view(), name='announcements'),
+    path('ajax/lectures', views.AjaxLectures.as_view(), name='lectures'),
+    path('ajax/exams', views.AjaxExams.as_view(), name='exams'),
+    path('ajax/events', views.AjaxEvents.as_view(), name='events'),
+    # path('ajax/weather', views.AjaxWeather.as_view(), name='weather'),
 
     # Admin
     path('admin/', admin.site.urls),
