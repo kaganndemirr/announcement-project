@@ -1,6 +1,7 @@
 # Django
 django==2.1.7
 # pytz==2018.9
+requests==2.19.1
 
 # Documentations
 mkdocs==1.0.4

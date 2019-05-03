@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     # Internal Applications
     'users',
     'classes',
-    'departments'
+    'departments',
+    'weather',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +73,19 @@ TEMPLATES = [
         },
     },
 ]
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'announcement_cache',
+    }
+}
+
+WEATHER = {
+    'URL': 'https://api.openweathermap.org/data/2.5/weather',
+    'CITY': 'Trabzon,TR',
+    'APIKEY': '600af0145da0ffb636ef611eb47055c4',
+}
 
 WSGI_APPLICATION = 'announcement.wsgi.application'
 
