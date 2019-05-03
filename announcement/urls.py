@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, re_path
 
 from announcement import views
+from classes.views import AjaxLectures, AjaxExams
+from departments.views import AjaxSlides, AjaxAnnouncement, AjaxEvents
 
 urlpatterns = [
     # Pages
@@ -24,12 +26,12 @@ urlpatterns = [
     re_path('^index/$', views.IndexView.as_view(), name='index'),
 
     # Ajax
-    path('ajax/slides', views.AjaxResponse.as_view(), name='slides'),
-    path('ajax/announcements', views.AjaxResponse.as_view(), name='announcements'),
-    path('ajax/lectures', views.AjaxResponse.as_view(), name='lectures'),
-    path('ajax/exams', views.AjaxResponse.as_view(), name='exams'),
-    path('ajax/events', views.AjaxResponse.as_view(), name='events'),
-    path('ajax/weather', views.AjaxWeather.as_view(), name='weather'),
+    path('ajax/slides', AjaxSlides.as_view(), name='slides'),
+    path('ajax/announcements', AjaxAnnouncement.as_view(), name='announcements'),
+    path('ajax/lectures', AjaxLectures.as_view(), name='lectures'),
+    path('ajax/exams', AjaxExams.as_view(), name='exams'),
+    path('ajax/events', AjaxEvents.as_view(), name='events'),
+    # path('ajax/weather', views.AjaxWeather.as_view(), name='weather'),
 
     # Admin
     path('admin/', admin.site.urls),
