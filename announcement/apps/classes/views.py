@@ -1,25 +1,27 @@
 from django.shortcuts import render
 from django.views.generic import View
 from django.http import JsonResponse
+from django.conf import settings
 
 from datetime import date
 from .models import Lecture, Exam
 
 class AjaxLectures(View):
     def get(self, request):
+        weekday = date.today().weekday()
         data = [
             {
                 'code': i.l_code,
                 'name': i.title,
                 'lecturer': i.lecturer,
-                'time': i.l_date.time(),
+                'time': i.l_date.strftime('%H:%M'),
             }
 
             for i in Lecture
                     .objects
-                    .filter(department=request.user.department,
-                        l_date__date__gte=date.today())
+                    .filter(department=request.user.department)
                     .order_by('l_date')
+            if i.l_date.weekday() == weekday
         ]
         return JsonResponse({"lectures": list(data)})
 
@@ -30,7 +32,7 @@ class AjaxExams(View):
                 'code': i.lecture.l_code,
                 'name': i.lecture.title,
                 'lecturer': i.lecture.lecturer,
-                'datetime': i.e_date,
+                'datetime': i.e_date.strftime('%d/%m/%Y %H:%M'),
                 'location': i.location,
                 'duration': i.duration,
             }

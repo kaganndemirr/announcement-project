@@ -4,6 +4,7 @@ from django.http import JsonResponse
 
 from datetime import date
 from .models import Slide, Announcement, Event
+from .variables import ACTIVE
 
 class AjaxAnnouncement(View):
     def get(self, request):
@@ -27,7 +28,7 @@ class AjaxSlides(View):
 
             for i in Slide
                     .objects
-                    .filter(department=request.user.department)
+                    .filter(department=request.user.department, status=ACTIVE)
                     .order_by('-creation_time').values()
         ]
         return JsonResponse({"slides": list(data)})
@@ -36,8 +37,8 @@ class AjaxEvents(View):
     def get(self, request):
         data = [
             {
-                'date': i['date'],
-                'name': i['name'],
+                'date': i['date'].strftime('%d/%m/%Y %H:%M'),
+                'title': i['name'],
                 'location': i['location']
             }
 
