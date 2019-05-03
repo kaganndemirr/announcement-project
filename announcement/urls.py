@@ -19,6 +19,7 @@ from django.urls import path, re_path
 from announcement import views
 from classes.views import AjaxLectures, AjaxExams
 from departments.views import AjaxSlides, AjaxAnnouncement, AjaxEvents
+from weather.views import AjaxWeather
 
 urlpatterns = [
     # Pages
@@ -31,7 +32,7 @@ urlpatterns = [
     path('ajax/lectures', AjaxLectures.as_view(), name='lectures'),
     path('ajax/exams', AjaxExams.as_view(), name='exams'),
     path('ajax/events', AjaxEvents.as_view(), name='events'),
-    # path('ajax/weather', views.AjaxWeather.as_view(), name='weather'),
+    path('ajax/weather', AjaxWeather.as_view(), name='weather'),
 
     # Admin
     path('admin/', admin.site.urls),
