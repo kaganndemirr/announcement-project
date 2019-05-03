@@ -19,14 +19,14 @@ class DeparmentAdmin(admin.ModelAdmin):
         return qs.filter(d_code=request.user.department)
 
 
-@admin.register(Content)
-class ContentAdmin(admin.ModelAdmin):
+@admin.register(Slide)
+class SlideAdmin(admin.ModelAdmin):
     fields = ('creation_time', 'title', 'data', 'type', 'status')
 
     list_display = ('creation_time', 'department', 'title', 'data', 'type', 'status')
 
     def get_queryset(self, request):
-        qs = super(ContentAdmin, self).get_queryset(request)
+        qs = super(SlideAdmin, self).get_queryset(request)
         if request.user.is_superuser:
             return qs
         return qs.filter(department=request.user.department)

@@ -21,20 +21,20 @@ class Department(models.Model):
         return '{name}'.format(name=self.name)
 
 
-class Content(models.Model):
+class Slide(models.Model):
     department = models.ForeignKey(
         verbose_name='Department', to='departments.Department',
         on_delete=models.CASCADE, null=True, blank=True, editable=False
     )
-    title = models.CharField(verbose_name='Content Name', max_length=30)
+    title = models.CharField(verbose_name='Title', max_length=30)
     status = models.SmallIntegerField(verbose_name='Status', choices=SITUATIONS)
     creation_time = models.DateTimeField(verbose_name=_('Creation Time'), default=datetime.now())
-    data = models.TextField(verbose_name='Data', max_length=500)
-    type = models.SmallIntegerField(verbose_name='Data Type', choices=TYPES)
+    data = models.TextField(verbose_name='Content', max_length=500)
+    type = models.SmallIntegerField(verbose_name='Content Type', choices=TYPES)
 
     class Meta:
-        verbose_name = _('Content')
-        verbose_name_plural = _('Contents')
+        verbose_name = _('Slide')
+        verbose_name_plural = _('Slides')
 
     def __str__(self):
         return '{title}'.format(title=self.title)

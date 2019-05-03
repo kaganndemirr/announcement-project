@@ -7,7 +7,7 @@ from datetime import date
 from datetime import timedelta
 
 # Local
-from departments.models import Announcement, Content, Event
+from departments.models import Announcement, Slide, Event
 from classes.models import Lecture, Exam
 
 
@@ -36,7 +36,7 @@ class MainView(TemplateView):
     template_name = 'main.html'
 
 
-class AjaxContents(View):
+class AjaxSlides(View):
     def get(self, request):
         data = [
             {
@@ -45,12 +45,12 @@ class AjaxContents(View):
                 'type': i['type']
             }
 
-            for i in Content
+            for i in Slide
                     .objects
                     .filter(department=request.user.department)
                     .order_by('-creation_time').values()
         ]
-        return JsonResponse({"contents": list(data)})
+        return JsonResponse({"slides": list(data)})
 
 
 class AjaxAnnouncement(View):
