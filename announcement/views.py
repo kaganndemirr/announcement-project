@@ -1,10 +1,13 @@
 # Django
-
 from django.http import JsonResponse
 from django.conf import settings
 from django.views.generic import View, TemplateView
 from django.views.static import serve
+from datetime import timedelta
 
+# Local
+from departments.models import Announcement, Slide, Event
+from classes.models import Lecture, Exam
 
 class IndexView(TemplateView):
     template_name = 'index.html'
@@ -18,24 +21,14 @@ class IndexView(TemplateView):
 
         return context
 
-
 class DocumentationView(View):
-
     def get(self, request, path='index.html', **kwargs):
         return serve(
             request, path, document_root=settings.DOCUMENTATION_ROOT, **kwargs
         )
 
-
 class MainView(TemplateView):
     template_name = 'main.html'
-
-class AjaxResponse(View):
-    def get(self, request):
-        # request.GET['param']
-        data =  dict()
-        data['boring'] = 'map'
-        return JsonResponse(data)
 
 class AjaxWeather(View):
     def get(self, request):
