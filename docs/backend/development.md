@@ -70,6 +70,11 @@ pip3 install -r requirements/base.txt
 python manage.py migrate
 ```
 
+**Add superuser**
+```bash
+python manage.py createsuperuser
+```
+
 **Run project on linux**
 ```bash
 ./manage.py runserver 0.0.0.0:8000
