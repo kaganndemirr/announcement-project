@@ -15,7 +15,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	first_name = models.CharField(verbose_name=_('First Name'), max_length=50)
 	last_name = models.CharField(verbose_name=_('Last Name'), max_length=50)
 	email = models.EmailField(
-        verbose_name=_('Email'), max_length=255, blank=True, null= True,
+        verbose_name=_('Email'), max_length=255, blank=True, null=True,
 		unique=True
     )
 	department = models.ForeignKey(verbose_name=_('Department'), to='departments.Department',
@@ -30,7 +30,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 	objects = UserManager()
 
 	USERNAME_FIELD = 'email'
-	REQUIRED_FIELDS = ['first_name', 'last_name', 'department']
+	REQUIRED_FIELDS = ['first_name', 'last_name']
 
 
 	class Meta:
