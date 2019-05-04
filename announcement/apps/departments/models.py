@@ -28,7 +28,7 @@ class Slide(models.Model):
     )
     title = models.CharField(verbose_name='Title', max_length=30)
     status = models.SmallIntegerField(verbose_name='Status', choices=SITUATIONS)
-    creation_time = models.DateTimeField(verbose_name=_('Creation Time'), default=datetime.now())
+    creation_time = models.DateTimeField(verbose_name=_('Creation Time'), default=datetime.now)
     data = models.TextField(verbose_name='Content', max_length=500)
     type = models.SmallIntegerField(verbose_name='Content Type', choices=TYPES)
 
@@ -45,7 +45,7 @@ class Event(models.Model):
         verbose_name='Department', to='departments.Department',
         on_delete=models.CASCADE, null=True, blank=True, editable=False
     )
-    date = models.DateTimeField(verbose_name=_('Date'), default=datetime.now())
+    date = models.DateTimeField(verbose_name=_('Date'), default=datetime.now)
     location = models.CharField(verbose_name='Location', max_length=100)
     name = models.CharField(verbose_name='Name', max_length=30)
 
@@ -62,7 +62,7 @@ class Announcement(models.Model):
         verbose_name='Department', to='departments.Department',
         on_delete=models.CASCADE, null=True, blank=True, editable=False
     )
-    creation_date = models.DateTimeField(verbose_name=_('Creation Time'), default=datetime.now())
+    creation_date = models.DateTimeField(verbose_name=_('Creation Time'), default=datetime.now)
     title = models.CharField(verbose_name='Title', max_length=30)
 
     class Meta:
