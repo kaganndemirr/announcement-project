@@ -70,6 +70,11 @@ pip3 install -r requirements/base.txt
 python manage.py migrate
 ```
 
+**Create cache table**
+```bash
+python manage.py createcachetable
+```
+
 **Add superuser**
 ```bash
 python manage.py createsuperuser
