@@ -62,6 +62,11 @@ Announcement
 							<div id="weather_forecast"></div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col">
+							<div class="text" id="tarihsaat"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -83,5 +88,13 @@ Announcement
 				orbitFactor++;
             	document.getElementById("scroll-left").style.animation= "scroll "+orbitFactor+"s linear infinite";
   			}
+		</script>
+		<script>
+			f();
+			 function f() {
+				 var today = new Date();
+				 document.getElementById("tarihsaat").innerHTML= today.toLocaleString();
+				 var t = setTimeout( function(){f()},900 );
+			}
 		</script>
 {% endblock %}
