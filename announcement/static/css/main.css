@@ -3,7 +3,7 @@
 }
 @keyframes scroll {
  0%   {
- transform: translateX(100%);
+ transform: translateX(50%);
  }
  100% {
  transform: translateX(-100%);
@@ -40,4 +40,17 @@
  font-weight: normal;
  font-style: normal;
  font-palette: normal;
+}
+table {
+  font-family: "Times New Roman";
+  margin: 10px;
+  border-collapse: collapse;
+}
+td, th {
+  border: 2px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
