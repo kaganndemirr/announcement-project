@@ -75,6 +75,11 @@ python manage.py migrate
 python manage.py createcachetable
 ```
 
+**Add superuser**
+```bash
+python manage.py createsuperuser
+```
+
 **Run project on linux**
 ```bash
 ./manage.py runserver 0.0.0.0:8000
