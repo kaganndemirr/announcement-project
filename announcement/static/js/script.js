@@ -44,18 +44,18 @@ const AJAX_INTERVAL = 1000 * 60 * 5;
 // Scroll Text
 (function(window) {
   var speedFactor = 10;
-
+  document.getElementById("speed").innerHTML =speedFactor+" seconds per tour";
   $("#scroll_speedup").click(function() {
     if (speedFactor > 1) {
       speedFactor --;
+      document.getElementById("speed").innerHTML =speedFactor+" seconds per tour";
     }
-
     $("#scroll_text").css('animation', "scroll " + speedFactor + "s linear infinite");
   });
 
   $("#scroll_speeddown").click(function() {
     speedFactor ++;
-
+    document.getElementById("speed").innerHTML =speedFactor+" seconds per tour";
     $("#scroll_text").css('animation', "scroll " + speedFactor + "s linear infinite");
   });
 })(window);
