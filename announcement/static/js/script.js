@@ -20,7 +20,7 @@ const AJAX_INTERVAL = 1000 * 60 * 5;
     console.log(data);
   }
   function onAnnouncements(data) {
-    $('#Announcement').text(data.text);
+    $('#Announcement').html(data.announcements+data.announcements.join(' | '));
     console.log(data);
   }
   function onLectures(data) {
@@ -30,12 +30,12 @@ const AJAX_INTERVAL = 1000 * 60 * 5;
     console.log(data);
   }
   function onEvents(data) {
-    $('#Event').text(data.text);
     console.log(data);
   }
   function onWeather(data) {
     var img = $('<img>');
     img.attr('src', data.icon);
+    $('#uptime').html("Güncellenme Zamanı: "+new Date().toLocaleString());
     $('#weather_forecast').html(data.text);
     $('#humidity').html("Nem: "+data.humidity);
     $('#temp').html("Sıcaklık: "+data.temperature);
@@ -43,6 +43,7 @@ const AJAX_INTERVAL = 1000 * 60 * 5;
     $('#sunr').html("Gündoğumu: "+data.sunrise);
     $('#suns').html("Günbatımı: "+data.sunset);
     $('#weather_forecast').append(img);
+
     console.log(data);
   }
 })(window);
