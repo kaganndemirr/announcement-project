@@ -36,7 +36,12 @@ const AJAX_INTERVAL = 1000 * 60 * 5;
   function onWeather(data) {
     var img = $('<img>');
     img.attr('src', data.icon);
-    $('#weather_forecast').text(data.text);
+    $('#weather_forecast').html(data.text);
+    $('#humidity').html("Nem: "+data.humidity);
+    $('#temp').html("Sıcaklık: "+data.temperature);
+    $('#wind').html("Rüzgar: "+data.wind);
+    $('#sunr').html("Gündoğumu: "+data.sunrise);
+    $('#suns').html("Günbatımı: "+data.sunset);
     $('#weather_forecast').append(img);
     console.log(data);
   }
