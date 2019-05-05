@@ -35,6 +35,14 @@ tr:nth-child(even) {
  font-style: normal;
  font-palette: normal;
 }
+/*Bg Common*/
+.bg{
+    background-size: 200px 50px;
+    background-repeat: no-repeat;
+    margin-bottom: 5px;
+    color: lightblue;
+    background-position: center;
+}
 /*kullanılmıyor suan*/
 /*.button {
   background-color: #4CAF50;
