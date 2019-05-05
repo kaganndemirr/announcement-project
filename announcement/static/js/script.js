@@ -20,6 +20,7 @@ const AJAX_INTERVAL = 1000 * 60 * 5;
     console.log(data);
   }
   function onAnnouncements(data) {
+    $('#Announcement').text(data.text);
     console.log(data);
   }
   function onLectures(data) {
@@ -29,6 +30,7 @@ const AJAX_INTERVAL = 1000 * 60 * 5;
     console.log(data);
   }
   function onEvents(data) {
+    $('#Event').text(data.text);
     console.log(data);
   }
   function onWeather(data) {
@@ -36,7 +38,6 @@ const AJAX_INTERVAL = 1000 * 60 * 5;
     img.attr('src', data.icon);
     $('#weather_forecast').text(data.text);
     $('#weather_forecast').append(img);
-
     console.log(data);
   }
 })(window);

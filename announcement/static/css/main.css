@@ -10,9 +10,6 @@
  transform: translateX(-100%);
  }
 }
-#scrollmain {
- animation: scroll 10s linear infinite;
-}
 /* Lecture Table */
 table {
   font-family: "Times New Roman";
