@@ -11,7 +11,7 @@ from .variables import SITUATIONS, TYPES
 
 class Department(models.Model):
     d_code = models.CharField(verbose_name='Department Code', max_length=10, unique=True)
-    name = models.CharField(verbose_name='Department Name', max_length=30)
+    name = models.CharField(verbose_name='Department Name', max_length=60)
 
     class Meta:
         verbose_name = _('Department')
@@ -26,7 +26,7 @@ class Slide(models.Model):
         verbose_name='Department', to='departments.Department',
         on_delete=models.CASCADE, null=True, blank=True, editable=False
     )
-    title = models.CharField(verbose_name='Title', max_length=30)
+    title = models.CharField(verbose_name='Title', max_length=100)
     status = models.SmallIntegerField(verbose_name='Status', choices=SITUATIONS)
     creation_time = models.DateTimeField(verbose_name=_('Creation Time'), default=datetime.now)
     data = models.TextField(verbose_name='Content', max_length=500)
@@ -47,7 +47,7 @@ class Event(models.Model):
     )
     date = models.DateTimeField(verbose_name=_('Date'), default=datetime.now)
     location = models.CharField(verbose_name='Location', max_length=100)
-    name = models.CharField(verbose_name='Name', max_length=30)
+    name = models.CharField(verbose_name='Name', max_length=150)
 
     class Meta:
         verbose_name = _('Event')
@@ -63,7 +63,7 @@ class Announcement(models.Model):
         on_delete=models.CASCADE, null=True, blank=True, editable=False
     )
     creation_date = models.DateTimeField(verbose_name=_('Creation Time'), default=datetime.now)
-    title = models.CharField(verbose_name='Title', max_length=30)
+    title = models.CharField(verbose_name='Title', max_length=150)
 
     class Meta:
         verbose_name = _('Announcement')
