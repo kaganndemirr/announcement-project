@@ -60,7 +60,7 @@ const AJAX_INTERVAL = 1000 * 60 * 5;
   });
 })(window);
 
-// Clock
+// Date and Clock
 (function(window) {
   setInterval(function() {
     $("#tarihsaat").html(new Date().toLocaleString());

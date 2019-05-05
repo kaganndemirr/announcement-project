@@ -10,29 +10,9 @@
  transform: translateX(-100%);
  }
 }
-.button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 9px 14px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 4px 2px;
-  transition-duration: 0.3s;
-  cursor: pointer;
+#scrollmain {
+ animation: scroll 10s linear infinite;
 }
-.button1 {
-  background-color: white;
-  color: black;
-  border: 2px solid #4CAF50;
-}
-.button1:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-
 /* Lecture Table */
 table {
   font-family: "Times New Roman";
@@ -58,3 +38,28 @@ tr:nth-child(even) {
  font-style: normal;
  font-palette: normal;
 }
+/*kullanılmıyor suan*/
+/*.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 9px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+.button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+}
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}*/
+
+
