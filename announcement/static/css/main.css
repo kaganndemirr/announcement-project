@@ -37,7 +37,6 @@ tr:nth-child(even) {
 }
 /*Bg Common*/
 .bg{
-    background-size: 200px 50px;
     background-repeat: no-repeat;
     margin-bottom: 5px;
     background-position: center;
