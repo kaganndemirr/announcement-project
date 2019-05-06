@@ -18,34 +18,24 @@ Announcement
 				<!-- Content Section -->
 				<div class="col-8">
 					<div class="row">
-						<div class="col" >
-							<iframe id="player" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/U3vAoJhIWms"></iframe>
-							<br>
-							<a href="https://getbootstrap.com/docs/4.1/components/carousel/" target="_blank">şunu kullanabiliriz</a>
-							video, slayt vb.
+						<div class="col">
+							<div id="mainSlide" class="carousel slide" data-ride="carousel">
+							  <div class="carousel-inner">
+								<div id="slideItemTpl" class="carousel-item active">
+									<!--
+									<iframe id="player" style="width:100%;height:80%;" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/U3vAoJhIWms"></iframe>
+									-->
+									<div class="carousel-data"></div>
+									<div class="carousel-caption d-none d-md-block"></div>
+								</div>
+							  </div>
+							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col">
-							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">SpeedChange</button>
-							<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  								<div class="modal-dialog" role="document">
-    								<div class="modal-content">
-      									<div class="modal-header">
-        									<h5 class="modal-title" id="exampleModalLabel">SpeedChange</h5>
-       							 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      									</div>
-										<div id="speed" class="modal-body"></div>
-      									<div class="modal-footer">
-        									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        									<button type="button" id="scroll_speedup" class="btn btn-primary">Speedup</button>
-											<button type="button" id="scroll_speeddown" class="btn btn-primary">Speeddown</button>
-      									</div>
-									</div>
- 				 				</div>
-							</div>
 							<div id="scroll_text">
-								<p id="Announcement" class="text"></p>
+								<span id="Announcement" class="text"></span>
 							</div>
 						</div>
 					</div>
@@ -54,7 +44,7 @@ Announcement
 					<div class="row">
 						<div class="col">
 							<p class="text">Bugünkü Dersler</p>
-							<table>
+							<table style="margin: 0 auto;">
 								<tr>
 									<th></th>
     								<th>08:00 - 10:00</th>
@@ -147,32 +137,45 @@ Announcement
 
 						</div>
 					</div>
-					<p class="text"> Hava Durumu</p>
-					<div class="row" style="text-align: center">
-						<table class="bg" style="background-image: url('https://themes.laborator.co/xenon/assets/images/clouds.png')">
-							<tr>
-								<td>
-									<div class="col text">
-										<p id="weather_forecast"></p>
-										<p id="temp" ></p>
-										<p style="margin-top: 20px" id="uptime"></p>
-									</div>
-								</td>
-								<td>
-									<div class="col">
-										<p id="humidity"></p>
-										<p id="sunr"></p>
-										<p id="suns"></p>
-										<p id="wind"></p>
-									</div>
-								</td>
-							</tr>
-						</table>
+					<div class="bg" style="text-align: center;background-image: url('https://themes.laborator.co/xenon/assets/images/clouds.png')">
+						<h3>Hava Durumu</h3>
+						<div class="row text">
+							<div class="col-6">
+								<p id="weather_forecast"></p>
+								<p id="temp" ></p>
+								<p id="uptime"></p>
+							</div>
+							<div class="col-6">
+								<p id="humidity"></p>
+								<p id="sunr"></p>
+								<p id="suns"></p>
+								<p id="wind"></p>
+							</div>
+						</div>
 					</div>
 					<div class="row">
 						<div class="col">
 							<div class="text" id="tarihsaat"></div>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<button id="optionsBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">SpeedChange</button>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">SpeedChange</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div id="speed" class="modal-body"></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" id="scroll_speedup" class="btn btn-primary">Speedup</button>
+						<button type="button" id="scroll_speeddown" class="btn btn-primary">Speeddown</button>
 					</div>
 				</div>
 			</div>

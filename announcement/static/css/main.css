@@ -1,4 +1,15 @@
+/* Slide */
+#mainSlide {
+    height: 80%;
+}
+
 /* Scroll Text */
+#optionsBtn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 25px;
+}
 #scroll_text {
     position: relative;
     overflow: hidden;

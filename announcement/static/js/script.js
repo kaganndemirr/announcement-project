@@ -2,6 +2,9 @@
 const CLOCK_INTERVAL = 1000 * 1;
 const AJAX_INTERVAL = 1000 * 60 * 5;
 
+// Templates
+var tplSlide = $('#slideItemTpl').html();
+
 // Ajax Requests
 (function(window) {
   function updateAjax() {
@@ -17,6 +20,36 @@ const AJAX_INTERVAL = 1000 * 60 * 5;
 
   // Ajax Responses
   function onSlides(data) {
+    $('#mainSlide .carousel-inner').html('');
+
+    var item;
+
+    for (var i=0; i<data.slides.length; i++) {
+      item = $('<div/>');
+      item.html(tplSlide);
+      item.addClass('carousel-item');
+      if (i == 0)
+        item.addClass('active');
+      item.children('.carousel-caption').text(data.slides[i].title)
+      switch(data.slides[i].type) {
+        case 0:
+          item.children('.carousel-data').text(data.slides[i].content);
+          // TODO youtube video ekle
+          break;
+        case 1:
+          var img = $('<img/>');
+          img.attr('src', data.slides[i].content);
+          item.children('.carousel-data').append(img);
+          break;
+        case 2:
+          item.children('.carousel-data').text(data.slides[i].content);
+          break;
+      }
+
+
+      $('#mainSlide .carousel-inner').append(item);
+    }
+
     console.log(data);
   }
   function onAnnouncements(data) {
