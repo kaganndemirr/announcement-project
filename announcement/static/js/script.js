@@ -20,7 +20,7 @@ const AJAX_INTERVAL = 1000 * 60 * 5;
     console.log(data);
   }
   function onAnnouncements(data) {
-    $('#Announcement').html(data.announcements+data.announcements.join(' | '));
+    $('#Announcement').text(data.announcements.join(' | '));
     console.log(data);
   }
   function onLectures(data) {
@@ -57,13 +57,13 @@ const AJAX_INTERVAL = 1000 * 60 * 5;
       speedFactor --;
       document.getElementById("speed").innerHTML =speedFactor+" seconds per tour";
     }
-    $("#scroll_text").css('animation', "scroll " + speedFactor + "s linear infinite");
+    $("#Announcement").css('animation', "scroll " + speedFactor + "s linear infinite");
   });
 
   $("#scroll_speeddown").click(function() {
     speedFactor ++;
     document.getElementById("speed").innerHTML =speedFactor+" seconds per tour";
-    $("#scroll_text").css('animation', "scroll " + speedFactor + "s linear infinite");
+    $("#Announcement").css('animation', "scroll " + speedFactor + "s linear infinite");
   });
 })(window);
 

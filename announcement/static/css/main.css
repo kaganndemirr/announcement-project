@@ -1,10 +1,18 @@
 /* Scroll Text */
 #scroll_text {
- animation: scroll 10s linear infinite;
+    position: relative;
+    overflow: hidden;
+    height: 2em;
+    width: 100%;
+}
+#Announcement {
+    position: absolute;
+    animation: scroll 10s linear infinite;
+    width: 100%;
 }
 @keyframes scroll {
  0%   {
- transform: translateX(50%);
+ transform: translateX(100%);
  }
  100% {
  transform: translateX(-100%);
