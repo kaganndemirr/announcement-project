@@ -1,6 +1,7 @@
 /* Slide */
 #mainSlide {
     height: 80%;
+    position: absolute;
 }
 
 /* Scroll Text */
@@ -15,6 +16,13 @@
     overflow: hidden;
     height: 2em;
     width: 100%;
+}
+#scroll_lefttext {
+    position: absolute;
+    overflow: hidden;
+    height: 2em;
+    width: 100%;
+    bottom: 2em;
 }
 #Announcement {
     position: absolute;
