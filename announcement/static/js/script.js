@@ -39,13 +39,13 @@ var tplSlide = $('#slideItemTpl').html();
         case 1:
           var img = $('<img/>');
           img.attr('src', data.slides[i].content);
+          img.addClass('slide-img');
           item.children('.carousel-data').append(img);
           break;
         case 2:
           item.children('.carousel-data').text(data.slides[i].content);
           break;
       }
-
 
       $('#mainSlide .carousel-inner').append(item);
     }
@@ -84,19 +84,34 @@ var tplSlide = $('#slideItemTpl').html();
 // Scroll Text
 (function(window) {
   var speedFactor = 10;
-  document.getElementById("speed").innerHTML =speedFactor+" seconds per tour";
+
+  function updateText() {
+    $('#speed_text').text(speedFactor + " saniyede bir tur");
+  }
+  updateText();
+
   $("#scroll_speedup").click(function() {
     if (speedFactor > 1) {
       speedFactor --;
-      document.getElementById("speed").innerHTML =speedFactor+" seconds per tour";
+      updateText();
     }
-    $("#Announcement").css('animation', "scroll " + speedFactor + "s linear infinite");
+    $("#Announcement").css('animation', "scrollleft " + speedFactor + "s linear infinite");
   });
 
   $("#scroll_speeddown").click(function() {
     speedFactor ++;
-    document.getElementById("speed").innerHTML =speedFactor+" seconds per tour";
-    $("#Announcement").css('animation', "scroll " + speedFactor + "s linear infinite");
+    updateText();
+    $("#Announcement").css('animation', "scrollleft " + speedFactor + "s linear infinite");
+  });
+})(window);
+
+// Settings
+(function(window) {
+  $(document.body).keydown(function() {
+    if (event.which == 13) { // Enter tuşu
+      $('#settingsModal').modal('show');
+      event.preventDefault();
+    }
   });
 })(window);
 

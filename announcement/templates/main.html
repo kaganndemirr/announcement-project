@@ -16,7 +16,7 @@ Announcement
 		<div class="container-fluid">
 			<div class="row">
 				<!-- Content Section -->
-				<div class="col-8"style="position:relative;">
+				<div class="col-8" id="content_section">
 					<div id="mainSlide" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner">
 							<div id="slideItemTpl" class="carousel-item active">
@@ -29,7 +29,7 @@ Announcement
 						</div>
 					</div>
 					<div id="scroll_lefttext">
-						<span class="text" id="Announcement" ></span>
+						<span id="Announcement"></span>
 					</div>
 				</div>
 				<div class="col-4">
@@ -54,7 +54,7 @@ Announcement
 							</div>
 						</div>
 					</div>
-					<div class="bg" style="text-align: center;background-image: url('https://themes.laborator.co/xenon/assets/images/clouds.png')">
+					<div class="bg" style="text-align: center;background-image: url('{% static 'img/clouds.png' %}')">
 						<h3>Hava Durumu</h3>
 						<div class="row text">
 							<div class="col-6">
@@ -78,19 +78,20 @@ Announcement
 				</div>
 			</div>
 		</div>
-		<button id="optionsBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">SpeedChange</button>
-		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">SpeedChange</h5>
+						<h5 class="modal-title" id="exampleModalLabel">Ayarlar</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					</div>
-					<div id="speed" class="modal-body"></div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" id="scroll_speedup" class="btn btn-primary">Speedup</button>
-						<button type="button" id="scroll_speeddown" class="btn btn-primary">Speeddown</button>
+					<div class="modal-body">
+						<h5>Kayan Yazı (Duyuru)</h5>
+						<p>
+							<button type="button" id="scroll_speedup" class="btn btn-primary">Hızlandır</button>
+							<button type="button" id="scroll_speeddown" class="btn btn-primary">Yavaşlat</button>
+							<span id="speed_text"></span>
+						</p>
 					</div>
 				</div>
 			</div>

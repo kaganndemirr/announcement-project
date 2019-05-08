@@ -1,34 +1,4 @@
-/* Slide */
-#mainSlide {
-    height: 80%;
-    position: absolute;
-}
-
-/* Scroll Text */
-#optionsBtn {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 25px;
-}
-.scroll_text {
-    position: relative;
-    overflow: hidden;
-    height: 2em;
-    width: 100%;
-}
-#scroll_lefttext {
-    position: absolute;
-    overflow: hidden;
-    height: 80%;
-    width: 100%;
-    bottom: 0;
-}
-#Announcement {
-    position: absolute;
-    animation: scrollleft 10s linear infinite;
-    width: 100%;
-}
+/* Keyframes */
 @keyframes scrollleft {
  0%   {
  transform: translateX(100%);
@@ -36,25 +6,6 @@
  100% {
  transform: translateX(-100%);
  }
-}
-/*Sidebar Scroll*/
-#Lectures {
-    position: absolute;
-    animation: scrollup 5s linear infinite;
-    width: 100%;
-    height: 100%;
-}
-#Exams {
-    position: absolute;
-    animation: scrollup 5s linear infinite;
-    width: 100%;
-    height: 100%;
-}
-#Events {
-    position: absolute;
-    animation: scrollup 5s linear infinite;
-    width: 100%;
-    height: 100%;
 }
 @keyframes scrollup {
  0%   {
@@ -64,6 +15,82 @@
  transform: translateY(-100%);
  }
 }
+
+/* Container */
+.container-fluid>.row {
+  height: 100%;
+}
+
+/* Content Section */
+#content_section {
+  position: relative;
+}
+
+/* Slide */
+#mainSlide {
+  width: 100%;
+  height: 80%;
+  top: 0;
+  position: absolute;
+}
+.slide-img {
+    height: 100%;
+}
+.carousel-item {
+  background: #333;
+  height: 100%;
+  text-align: center;
+}
+.carousel-data {
+  margin: 0 auto;
+  color: #dedede;
+}
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+/* Scroll Text */
+.scroll_text {
+    position: relative;
+    overflow: hidden;
+    height: 2em;
+    width: 100%;
+}
+#scroll_lefttext {
+    overflow: hidden;
+    height: 20%;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+#Announcement {
+    position: absolute;
+    animation: scrollleft 10s linear infinite;
+    font-size: 2em;
+    height: 2em;
+    white-space: nowrap;
+}
+
+/*Sidebar Scroll*/
+#Lectures {
+    position: absolute;
+    animation: scrollup 5s linear infinite;
+    width: 100%;
+}
+#Exams {
+    position: absolute;
+    animation: scrollup 5s linear infinite;
+    width: 100%;
+}
+#Events {
+    position: absolute;
+    animation: scrollup 5s linear infinite;
+    width: 100%;
+}
+
 /* Lecture Table */
 table {
   font-family: "Times New Roman";
@@ -89,11 +116,10 @@ tr:nth-child(even) {
  font-style: normal;
  font-palette: normal;
 }
+
 /*Bg Common*/
 .bg{
     background-repeat: no-repeat;
     margin-bottom: 5px;
     background-position: center;
 }
-
-
