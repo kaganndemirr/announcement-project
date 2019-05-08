@@ -1,6 +1,7 @@
 // Constants
 const CLOCK_INTERVAL = 1000 * 1;
 const AJAX_INTERVAL = 1000 * 60 * 5;
+const SLIDE_SHOW_INTERVAL = 1000 * 10;
 
 // Templates
 var tplSlide = $('#slideItemTpl').html();
@@ -33,8 +34,10 @@ var tplSlide = $('#slideItemTpl').html();
       item.children('.carousel-caption').text(data.slides[i].title)
       switch(data.slides[i].type) {
         case 0:
-          item.children('.carousel-data').text(data.slides[i].content);
-          // TODO youtube video ekle
+          var div = $('<div/>');
+          div.addClass('ytplayer');
+          item.data('youtube-url', data.slides[i].content);
+          item.children('.carousel-data').append(div);
           break;
         case 1:
           var img = $('<img/>');
@@ -50,6 +53,11 @@ var tplSlide = $('#slideItemTpl').html();
       $('#mainSlide .carousel-inner').append(item);
     }
 
+    if (window.ytAPIReady) {
+      window.createPlayers();
+    } else {
+      window.slideContentReady = true;
+    }
     console.log(data);
   }
   function onAnnouncements(data) {
@@ -120,4 +128,123 @@ var tplSlide = $('#slideItemTpl').html();
   setInterval(function() {
     $("#tarihsaat").html(new Date().toLocaleString());
   }, CLOCK_INTERVAL);
+})(window);
+
+// Slide Show
+(function(window) {
+  var players = [], playerReady = {};
+  var autoSlideEnabled = false;
+
+  window.createPlayers = createPlayers;
+  window.onYouTubeIframeAPIReady = function() {
+    if (window.slideContentReady) {
+      window.createPlayers();
+    } else {
+      window.ytAPIReady = true;
+    }
+  }
+
+  function createPlayers() {
+    players = [];
+    playerReady = {};
+
+    $('.carousel-item').each(function() {
+      var url = $(this).data('youtube-url');
+      if (url) {
+        var id = youtube_parser(url);
+        if (id) {
+          $(this).data('youtube-idx', players.length);
+          $(this).find('.ytplayer').attr('id', 'ytplayer' + players.length);
+          players.push(new YT.Player('ytplayer' + players.length, {
+            videoId: id,
+            playerVars: {
+              'autoplay': 0,
+              'controls': 0,
+              'showinfo': 0,
+              'rel': 0,
+              'modestbranding': 1,
+            },
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+          }));
+        }
+      }
+    });
+
+    var idx = getYTIdx($('.carousel-item.active'));
+    if (idx == undefined) {
+      autoSlideEnabled = true;
+      setTimeout(nextSlide, SLIDE_SHOW_INTERVAL);
+    }
+  }
+  function onPlayerReady(event) {
+    // Oynatıcı aktif slaytın ise oynat
+    var parent = $(event.target.getIframe()).parents('.carousel-item');
+    if (parent.hasClass('active')) {
+      autoSlideEnabled = false;
+      event.target.playVideo();
+    }
+
+    // Oynatıcı hazır bayrağını işaretle
+    var idx = getYTIdx(parent);
+    if (idx != undefined) {
+      playerReady[idx] = true;
+    }
+  }
+  function onPlayerStateChange(event) {
+    switch (event.data) {
+      case YT.PlayerState.ENDED:
+        autoSlideEnabled = true;
+        nextSlide();
+        break;
+      default:
+
+    }
+  }
+
+  // Youtube api yükle
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // Slayt ayarları
+  $('#mainSlide').carousel({
+    interval: false, // Kendi kendine çalışmasın
+    pause: false,
+  });
+
+  // Slayt geçiş yöneticisi
+  function nextSlide() {
+    if (autoSlideEnabled) {
+      $('#mainSlide').carousel('next');
+      setTimeout(nextSlide, SLIDE_SHOW_INTERVAL);
+    }
+  }
+
+  // Slayt değiştiğinde
+  $('#mainSlide').on('slid.bs.carousel', function(evt) {
+    var idx = getYTIdx(evt.relatedTarget)
+    if (idx != undefined && playerReady[idx]) {
+      autoSlideEnabled = false;
+      players[idx].playVideo();
+    }
+  });
+
+  // Slaytın youtube player indisini bul
+  function getYTIdx(elm) {
+    var idx = parseInt($(elm).data('youtube-idx'));
+    if (!isNaN(idx) && players[idx]) {
+      return idx;
+    }
+  }
+
+  // https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-video-id-from-a-url
+  function youtube_parser(url) {
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    return (match&&match[7].length==11)? match[7] : false;
+  }
 })(window);
