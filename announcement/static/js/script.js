@@ -195,6 +195,13 @@ var tplSlide = $('#slideItemTpl').html();
   }
   function onPlayerStateChange(event) {
     switch (event.data) {
+      case YT.PlayerState.PLAYING:
+        var parent = $(event.target.getIframe()).parents('.carousel-item');
+        if (!parent.hasClass('active')) { // slayt aktif değilse
+          event.target.pauseVideo(); // durdur
+          event.target.seekTo(0, true); // başa sar
+        }
+        break;
       case YT.PlayerState.ENDED:
         autoSlideEnabled = true;
         nextSlide();
