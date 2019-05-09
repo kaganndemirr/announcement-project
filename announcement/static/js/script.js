@@ -65,6 +65,7 @@ var tplSlide = $('#slideItemTpl').html();
     console.log(data);
   }
   function onLectures(data) {
+    $('#Lectures').text(data.lectures);
      console.log(data);
   }
   function onExams(data) {

@@ -59,8 +59,8 @@
 /* Scroll Text */
 .scroll_text {
     position: relative;
-    overflow: hidden;
     height: 10em;
+    overflow: hidden;
     width: 100%;
 }
 #scroll_lefttext {
@@ -83,16 +83,19 @@
     position: absolute;
     animation: scrollup 5s linear infinite;
     width: 100%;
+    height: 10em;
 }
 #Exams {
     position: absolute;
     animation: scrollup 5s linear infinite;
     width: 100%;
+    height: 10em;
 }
 #Events {
     position: absolute;
     animation: scrollup 5s linear infinite;
     width: 100%;
+    height: 10em;
 }
 
 /* Lecture Table */
