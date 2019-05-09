@@ -1,10 +1,13 @@
 // Constants
 const CLOCK_INTERVAL = 1000 * 1;
 const AJAX_INTERVAL = 1000 * 60 * 5;
-const SLIDE_SHOW_INTERVAL = 1000 * 10;
+var SLIDE_SHOW_INTERVAL = 1000 * 15;
 
 // Templates
 var tplSlide = $('#slideItemTpl').html();
+/*var tplSlide = $('#Events').html();
+var tplSlide = $('#Exams').html();
+var tplSlide = $('#Lectures').html();//*/
 
 // Ajax Requests
 (function(window) {
@@ -62,34 +65,31 @@ var tplSlide = $('#slideItemTpl').html();
   }
   function onAnnouncements(data) {
     $('#Announcement').text(data.announcements.join(' | '));
-    console.log(data);
+    //console.log(data);
   }
   function onLectures(data) {
-    var a=data.lectures.length;
     var str="<h5>Bugünkü Dersler</h5>";
-    for(var b=0;b<a;b++){
-      str+=data.lectures[b].code+" "+data.lectures[b].name+" "+data.lectures[b].lecturer+" "+data.lectures[b].time+"<br>";
+    for(var b=0;b<data.lectures.length;b++){
+      str+=" "+data.lectures[b].code+" "+data.lectures[b].name+" "+data.lectures[b].lecturer+" "+data.lectures[b].time+"<br>";
     }
     $('#Lectures').html(str);
-     console.log(data);
+     //console.log(data);
   }
   function onExams(data) {
-    var a=data.exams.length;
     var str="<h5>Yaklaşan Sınavlar</h5>";
-    for(var b=0;b<a;b++){
-      str+=data.exams[b].code+" "+data.exams[b].name+" "+data.exams[b].lecturer+" "+data.exams[b].datetime+" "+data.exams[b].location+" "+data.exams[b].duration+"<br>";
+    for(var b=0;b<data.exams.length;b++){
+      str+=" "+data.exams[b].code+" "+data.exams[b].name+" "+data.exams[b].lecturer+" "+data.exams[b].datetime+" "+data.exams[b].location+" "+data.exams[b].duration+"<br>";
     }
     $('#Exams').html(str);
-    console.log(data);
+    //console.log(data);
   }
   function onEvents(data) {
-    var a=data.events.length;
     var str="<h5>Yaklaşan Etkinlikler</h5>";
-    for(var b=0;b<a;b++){
-      str+=data.events[b].datetime+" "+data.events[b].title+" "+data.events[b].location+"<br>";
+    for(var b=0;b<data.events.length;b++){
+      str+=" "+data.events[b].datetime+" "+data.events[b].title+" "+data.events[b].location+"<br>";
     }
     $('#Events').html(str);
-    console.log(data);
+    //console.log(data);
   }
   function onWeather(data) {
     var img = $('<img>');
@@ -103,32 +103,63 @@ var tplSlide = $('#slideItemTpl').html();
     $('#suns').html("Günbatımı: "+data.sunset);
     $('#weather_forecast').append(img);
 
-    console.log(data);
+    //console.log(data);
   }
 })(window);
 
 // Scroll Text
 (function(window) {
-  var speedFactor = 10;
-
+  var speedFactorhorizontal = 15;
+  var speedFactorvertical=15;
   function updateText() {
-    $('#speed_text').text(speedFactor + " saniyede bir tur");
+    $('#speed_text').html(speedFactorhorizontal + " saniyede bir yatay tur"+ "<br>"+speedFactorvertical+" saniyede bir dikey tur"+"<br>"+SLIDE_SHOW_INTERVAL/1000+" saniyede slayt geçiş hızı"+"<br>");
   }
   updateText();
 
-  $("#scroll_speedup").click(function() {
-    if (speedFactor > 1) {
-      speedFactor --;
+  $("#scroll_speeduph").click(function() {
+    if (speedFactorhorizontal > 1) {
+      speedFactorhorizontal --;
       updateText();
     }
-    $("#Announcement").css('animation', "scrollleft " + speedFactor + "s linear infinite");
+    $("#Announcement").css('animation', "scrollleft " + speedFactorhorizontal + "s linear infinite");
   });
 
-  $("#scroll_speeddown").click(function() {
-    speedFactor ++;
+  $("#scroll_speeddownh").click(function() {
+    speedFactorhorizontal ++;
     updateText();
-    $("#Announcement").css('animation', "scrollleft " + speedFactor + "s linear infinite");
+    $("#Announcement").css('animation', "scrollleft " + speedFactorhorizontal + "s linear infinite");
   });
+
+  $("#scroll_speedupv").click(function() {
+    if (speedFactorvertical > 1) {
+      speedFactorvertical --;
+      updateText();
+    }
+    $("#Lectures").css('animation', "scrollup " + speedFactorvertical + "s linear infinite");
+    $("#Exams").css('animation', "scrollup " + speedFactorvertical + "s linear infinite");
+    $("#Events").css('animation', "scrollup " + speedFactorvertical + "s linear infinite");
+  });
+
+  $("#scroll_speeddownv").click(function() {
+    speedFactorvertical ++;
+    updateText();
+    $("#Lectures").css('animation', "scrollup " + speedFactorvertical + "s linear infinite");
+    $("#Exams").css('animation', "scrollup " + speedFactorvertical + "s linear infinite");
+    $("#Events").css('animation', "scrollup " + speedFactorvertical + "s linear infinite");
+  });
+
+  $("#slidespeedup").click(function() {
+    if (SLIDE_SHOW_INTERVAL > 1000) {
+      SLIDE_SHOW_INTERVAL -=1000;
+      updateText();
+    }
+  });
+
+  $("#slidespeeddown").click(function() {
+    SLIDE_SHOW_INTERVAL +=1000;
+    updateText();
+  });
+
 })(window);
 
 // Settings
