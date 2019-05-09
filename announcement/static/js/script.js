@@ -66,7 +66,7 @@ var tplSlide = $('#slideItemTpl').html();
   }
   function onLectures(data) {
     var a=data.lectures.length;
-    var str="";
+    var str="<h5>Bugünkü Dersler</h5>";
     for(var b=0;b<a;b++){
       str+=data.lectures[b].code+" "+data.lectures[b].name+" "+data.lectures[b].lecturer+" "+data.lectures[b].time+"<br>";
     }
@@ -75,14 +75,20 @@ var tplSlide = $('#slideItemTpl').html();
   }
   function onExams(data) {
     var a=data.exams.length;
-    var str="";
+    var str="<h5>Yaklaşan Sınavlar</h5>";
     for(var b=0;b<a;b++){
-      str+=data.exams[b].code+" "+data.exams[b].name+" "+data.exams[b].lecturer+" "+data.exams[b].datetime+"<br>";
+      str+=data.exams[b].code+" "+data.exams[b].name+" "+data.exams[b].lecturer+" "+data.exams[b].datetime+" "+data.exams[b].location+" "+data.exams[b].duration+"<br>";
     }
     $('#Exams').html(str);
     console.log(data);
   }
   function onEvents(data) {
+    var a=data.events.length;
+    var str="<h5>Yaklaşan Etkinlikler</h5>";
+    for(var b=0;b<a;b++){
+      str+=data.events[b].datetime+" "+data.events[b].title+" "+data.events[b].location+"<br>";
+    }
+    $('#Events').html(str);
     console.log(data);
   }
   function onWeather(data) {
