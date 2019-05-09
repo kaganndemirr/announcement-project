@@ -37,7 +37,7 @@ class AjaxEvents(View):
     def get(self, request):
         data = [
             {
-                'date': i['date'].strftime('%d/%m/%Y %H:%M'),
+                'datetime': i['date'].strftime('%d/%m/%Y %H:%M'),
                 'title': i['name'],
                 'location': i['location']
             }
