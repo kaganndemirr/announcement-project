@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View
 from django.http import JsonResponse
 from django.conf import settings
+from django.utils.timezone import localtime
 
 from datetime import date
 from .models import Lecture, Exam
@@ -14,7 +15,7 @@ class AjaxLectures(View):
                 'code': i.l_code,
                 'name': i.title,
                 'lecturer': i.lecturer,
-                'time': i.l_date.strftime('%H:%M'),
+                'time': localtime(i.l_date).strftime('%H:%M'),
             }
 
             for i in Lecture
@@ -32,7 +33,7 @@ class AjaxExams(View):
                 'code': i.lecture.l_code,
                 'name': i.lecture.title,
                 'lecturer': i.lecture.lecturer,
-                'datetime': i.e_date.strftime('%d/%m/%Y %H:%M'),
+                'datetime': localtime(i.e_date).strftime('%d/%m/%Y %H:%M'),
                 'location': i.location,
                 'duration': i.duration,
             }
