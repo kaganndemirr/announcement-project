@@ -65,10 +65,21 @@ var tplSlide = $('#slideItemTpl').html();
     console.log(data);
   }
   function onLectures(data) {
-    $('#Lectures').text(data.lectures);
+    var a=data.lectures.length;
+    var str="";
+    for(var b=0;b<a;b++){
+      str+=data.lectures[b].code+" "+data.lectures[b].name+" "+data.lectures[b].lecturer+" "+data.lectures[b].time+"<br>";
+    }
+    $('#Lectures').html(str);
      console.log(data);
   }
   function onExams(data) {
+    var a=data.exams.length;
+    var str="";
+    for(var b=0;b<a;b++){
+      str+=data.exams[b].code+" "+data.exams[b].name+" "+data.exams[b].lecturer+" "+data.exams[b].datetime+"<br>";
+    }
+    $('#Exams').html(str);
     console.log(data);
   }
   function onEvents(data) {
