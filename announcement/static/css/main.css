@@ -60,7 +60,7 @@
 .scroll_text {
     position: relative;
     overflow: hidden;
-    height: 2em;
+    height: 10em;
     width: 100%;
 }
 #scroll_lefttext {

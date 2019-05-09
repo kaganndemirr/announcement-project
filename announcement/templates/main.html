@@ -36,7 +36,7 @@ Announcement
 					<div class="row">
 						<div class="col">
 							<div class="scroll_text">
-								<span class="text" id="Lectures">a</span>
+								<span class="text" id="Lectures" style="height: 25%">a</span>
 							</div>
 						</div>
 					</div>
@@ -76,25 +76,22 @@ Announcement
 						</div>
 					</div>
 				</div>
+				<button type="button" style="height: 2em; padding-bottom: 2em" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">SpeedChange</button>
 			</div>
 		</div>
-		<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Ayarlar</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					</div>
-					<div class="modal-body">
-						<h5>Kayan Yazı (Duyuru)</h5>
-						<p>
-							<button type="button" id="scroll_speedup" class="btn btn-primary">Hızlandır</button>
-							<button type="button" id="scroll_speeddown" class="btn btn-primary">Yavaşlat</button>
-							<span id="speed_text"></span>
-						</p>
-					</div>
-				</div>
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				  <h5 class="modal-title" id="exampleModalLabel">Ayarlar</h5>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			  </div>
+			  <div class="modal-body">
+				  <button type="button" id="scroll_speedup" class="btn btn-primary">Hızlandır</button>
+				  <button type="button" id="scroll_speeddown" class="btn btn-primary">Yavaşlat</button>
+			  </div>
 			</div>
+		  </div>
 		</div>
 {% endblock %}
 
