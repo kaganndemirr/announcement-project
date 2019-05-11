@@ -27,6 +27,26 @@ SECRET_KEY = 'b7#cxkbwagk(dq7$a%@&=qi+o+n&+@q#9&#oee71n7n5uollkm'
 
 AUTH_USER_MODEL = 'users.User'
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = ['*']
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -61,7 +81,7 @@ ROOT_URLCONF = 'announcement.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(PACKAGE_ROOT, 'templates')],
+        'DIRS': [os.path.join(PACKAGE_ROOT, 'templates/')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,6 +106,25 @@ WEATHER = {
     'CITY': 'Trabzon,TR',
     'APIKEY': '600af0145da0ffb636ef611eb47055c4',
 }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+# Source Code
+
+Source_Code_Backend = 'https://github.com/kaganndemirr/kozmoz-project-backend'
+
+# Domain
+
+DOMAIN_BACKEND = 'http://127.0.0.1:8000'
+
+# Login URL
+
+LOGIN_URL = 'http://127.0.0.1:8000/admin'
 
 WSGI_APPLICATION = 'announcement.wsgi.application'
 
