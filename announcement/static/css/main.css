@@ -76,26 +76,31 @@
     font-size: 2em;
     height: 2em;
     white-space: nowrap;
+    width: 100%;
+    overflow: visible;
 }
 
 /*Sidebar Scroll*/
+.sidebar_section {
+  height: 12em;
+}
 #Lectures {
     position: absolute;
     animation: scrollup 15s linear infinite;
     width: 100%;
-    height: 12em;
+    height: 100%;
 }
 #Exams {
     position: absolute;
     animation: scrollup 15s linear infinite;
     width: 100%;
-    height: 12em;
+    height: 100%;
 }
 #Events {
     position: absolute;
     animation: scrollup 15s linear infinite;
     width: 100%;
-    height: 12em;
+    height: 100%;
 }
 
 /* Lecture Table */
