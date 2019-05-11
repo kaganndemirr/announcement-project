@@ -5,24 +5,29 @@ from django.conf import settings
 from django.utils.timezone import localtime
 
 from datetime import date
-from .models import Lecture, Exam
+from .models import Lecture, Exam, LectureSession
 
 class AjaxLectures(View):
     def get(self, request):
         weekday = date.today().weekday()
         data = [
             {
-                'code': i.l_code,
-                'name': i.title,
-                'lecturer': i.lecturer,
-                'time': localtime(i.l_date).strftime('%H:%M'),
+                'code': lec.l_code,
+                'name': lec.title,
+                'lecturer': lec.lecturer,
+                'time': localtime(ses.s_date).strftime('%H:%M'),
+                'duration': ses.duration,
+                'location': ses.location,
             }
 
-            for i in Lecture
+            for lec in Lecture
                     .objects
                     .filter(department=request.user.department)
-                    .order_by('l_date')
-            if i.l_date.weekday() == weekday
+            for ses in LectureSession
+                    .objects
+                    .filter(lecture=lec)
+                    .order_by('s_date')
+            if ses.s_date.weekday() == weekday
         ]
         return JsonResponse({"lectures": list(data)})
 

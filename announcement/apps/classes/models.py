@@ -14,7 +14,6 @@ class Lecture(models.Model):
     l_code = models.CharField(verbose_name='Code', max_length=10, unique=True)
     title = models.CharField(verbose_name='Lecture Name', max_length=60)
     lecturer = models.CharField(verbose_name='Lecturer Name', max_length=60)
-    l_date = models.DateTimeField(verbose_name=_('Lecture Date '), default=datetime.now)
 
     class Meta:
         verbose_name = _('Lecture')
@@ -22,6 +21,20 @@ class Lecture(models.Model):
 
     def __str__(self):
         return '{title}'.format(title=self.title)
+
+
+class LectureSession(models.Model):
+    lecture = models.ForeignKey(to='classes.Lecture', on_delete=models.CASCADE)
+    s_date = models.DateTimeField(verbose_name=_('Session Date'), default=datetime.now)
+    duration = models.CharField(verbose_name='Duration', max_length=10)
+    location = models.CharField(verbose_name='Location', max_length=100, blank=True)
+
+    class Meta:
+        verbose_name = _('Lecture Session')
+        verbose_name_plural = _('Lecture Sessions')
+
+    def __str__(self):
+        return '{lecture}'.format(lecture=self.lecture.title)
 
 
 class Exam(models.Model):
