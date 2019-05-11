@@ -16,47 +16,88 @@ Announcement
 		<div class="container-fluid">
 			<div class="row">
 				<!-- Content Section -->
-				<div class="col-8">
-					<div class="row">
-						<div class="col">
-							<iframe id="player" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/U3vAoJhIWms"></iframe>
-							<br>
-							<a href="https://getbootstrap.com/docs/4.1/components/carousel/" target="_blank">şunu kullanabiliriz</a>
-							-- video, slayt vb. --
+				<div class="col-8" id="content_section">
+					<div id="mainSlide" class="carousel slide" data-ride="carousel">
+						<div class="carousel-inner">
+							<div id="slideItemTpl" class="carousel-item active">
+								<!--
+								<iframe id="player" style="width:100%;height:80%;" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/U3vAoJhIWms"></iframe>
+								-->
+								<div class="carousel-data"></div>
+								<div class="carousel-caption d-none d-md-block"></div>
+							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col">
-							-- kayan yazı duyurular --
-						</div>
+					<div id="scroll_lefttext">
+						<span id="Announcement"></span>
 					</div>
 				</div>
-
-				<!-- Sidebar -->
 				<div class="col-4">
 					<div class="row">
 						<div class="col">
-							-- bugünkü dersler --
+							<div class="scroll_text">
+								<span class="text" id="Lectures"></span>
+							</div>
 						</div>
 					</div>
-
 					<div class="row">
 						<div class="col">
-							-- en yakın sınavlar --
+							<div class="scroll_text">
+								<span class="text" id="Exams">a</span>
+							</div>
 						</div>
 					</div>
-
 					<div class="row">
 						<div class="col">
-							-- yaklaşan etkinlikler --
+							<div class="scroll_text">
+								<span class="text" id="Events">a</span>
+							</div>
 						</div>
 					</div>
-
+					<div class="bg" style="text-align: center;background-image: url('{% static 'img/clouds.png' %}')">
+						<h3>Hava Durumu</h3>
+						<div class="row text">
+							<div class="col-6">
+								<p id="weather_forecast"></p>
+								<p id="temp" ></p>
+								<p id="uptime"></p>
+							</div>
+							<div class="col-6">
+								<p id="humidity"></p>
+								<p id="sunr"></p>
+								<p id="suns"></p>
+								<p id="wind"></p>
+							</div>
+						</div>
+					</div>
 					<div class="row">
 						<div class="col">
-							-- hava durumu --
-							<div id="weather_forecast"></div>
+							<div class="text" id="tarihsaat"></div>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Ayarlar</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div class="modal-body">
+						<h5>Hız Ayarları</h5>
+						<p>
+							<button type="button" id="scroll_speeduph" class="btn btn-primary">Yatay Hızlandır</button>
+							<button type="button" id="scroll_speeddownh" class="btn btn-primary">Yatay Yavaşlat</button>
+							<br>
+							<button type="button" id="scroll_speedupv" class="btn btn-primary">Dikey Hızlandır</button>
+							<button type="button" id="scroll_speeddownv" class="btn btn-primary">Dikey Yavaşlat</button>
+							<br>
+							<button type="button" id="slidespeedup" class="btn btn-primary">Slayt Hızlandır </button>
+							<button type="button" id="slidespeeddown" class="btn btn-primary">Slayt Yavaşlat</button>
+						</p>
+						<span id="speed_text"></span>
 					</div>
 				</div>
 			</div>

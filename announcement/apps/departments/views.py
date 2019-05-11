@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import View
 from django.http import JsonResponse
+from django.utils.timezone import localtime
 
 from datetime import date
 from .models import Slide, Announcement, Event
@@ -37,9 +38,9 @@ class AjaxEvents(View):
     def get(self, request):
         data = [
             {
-                'date': i['date'].strftime('%d/%m/%Y %H:%M'),
+                'datetime': localtime(i['date']).strftime('%d/%m/%Y %H:%M'),
                 'title': i['name'],
-                'location': i['location']
+                'location': i['location'],
             }
 
             for i in Event

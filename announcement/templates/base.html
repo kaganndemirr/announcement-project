@@ -1,6 +1,5 @@
 {% load i18n staticfiles %}
 
-<!DOCTYPE html>
 <html {% block html-class %}{% endblock%}>
   <head>
     {% block header %}
@@ -19,7 +18,7 @@
     {% block style %}
     {% endblock %}
   </head>
-  <body{% block body-class %}{% endblock %}>
+  <body {% block body-class %}{% endblock %}>
     {% block content %}
     {% endblock%}
 

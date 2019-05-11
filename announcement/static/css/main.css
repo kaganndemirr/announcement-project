@@ -1,0 +1,132 @@
+/* Keyframes */
+@keyframes scrollleft {
+ 0%   {
+ transform: translateX(100%);
+ }
+ 100% {
+ transform: translateX(-100%);
+ }
+}
+@keyframes scrollup {
+ 0%   {
+ transform: translateY(100%);
+ }
+ 100% {
+ transform: translateY(-100%);
+ }
+}
+
+/* Container */
+.container-fluid>.row {
+  height: 100%;
+}
+
+/* Content Section */
+#content_section {
+  position: relative;
+}
+
+/* Slide */
+#mainSlide {
+  width: 100%;
+  height: 80%;
+  top: 0;
+  position: absolute;
+}
+.slide-img {
+    height: 100%;
+}
+.carousel-item {
+  background: #333;
+  height: 100%;
+  text-align: center;
+}
+.carousel-data {
+  margin: 0 auto;
+  color: #dedede;
+}
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+.ytplayer {
+  width: 100%;
+  height: 100%;
+}
+
+/* Scroll Text */
+.scroll_text {
+    position: relative;
+    height: 10em;
+    overflow: hidden;
+    width: 100%;
+}
+#scroll_lefttext {
+    overflow: hidden;
+    height: 20%;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+#Announcement {
+    position: absolute;
+    animation: scrollleft 15s linear infinite;
+    font-size: 2em;
+    height: 2em;
+    white-space: nowrap;
+}
+
+/*Sidebar Scroll*/
+#Lectures {
+    position: absolute;
+    animation: scrollup 15s linear infinite;
+    width: 100%;
+    height: 12em;
+}
+#Exams {
+    position: absolute;
+    animation: scrollup 15s linear infinite;
+    width: 100%;
+    height: 12em;
+}
+#Events {
+    position: absolute;
+    animation: scrollup 15s linear infinite;
+    width: 100%;
+    height: 12em;
+}
+
+/* Lecture Table */
+table {
+  font-family: "Times New Roman";
+  margin: 10px;
+  border-collapse: collapse;
+}
+td, th {
+  border: 2px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+/* Common */
+.text {
+ font-size: 14px;
+ font-family: "Times New Roman";
+ margin: 10px;
+ text-align: center;
+ font-weight: normal;
+ font-style: normal;
+ font-palette: normal;
+}
+
+/*Bg Common*/
+.bg{
+    background-repeat: no-repeat;
+    margin-bottom: 5px;
+    background-position: center;
+}
