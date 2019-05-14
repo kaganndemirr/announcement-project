@@ -5,9 +5,6 @@ var SLIDE_SHOW_INTERVAL = 1000 * 15;
 
 // Templates
 var tplSlide = $('#slideItemTpl').html();
-/*var tplSlide = $('#Events').html();
-var tplSlide = $('#Exams').html();
-var tplSlide = $('#Lectures').html();//*/
 
 // Ajax Requests
 (function(window) {
@@ -68,31 +65,36 @@ var tplSlide = $('#Lectures').html();//*/
     //console.log(data);
   }
   function onLectures(data) {
-    var str="<h5>Bugünkü Dersler</h5>";
+    var str = "";
     for(var b=0;b<data.lectures.length;b++){
-      str+=" "+data.lectures[b].code+" "+data.lectures[b].name+" "+data.lectures[b].lecturer+" "+data.lectures[b].time+"<br>";
+      str+="<b>"+data.lectures[b].code+" "+data.lectures[b].name + "</b> <br>";
+      str+="<i>"+data.lectures[b].lecturer+" "+data.lectures[b].location + "</i> <br>";
+      str+=data.lectures[b].time+" "+data.lectures[b].duration+"<br><br>";
     }
+
     $('#Lectures').html(str);
-     //console.log(data);
+    //console.log(data);
   }
   function onExams(data) {
-    var str="<h5>Yaklaşan Sınavlar</h5>";
+    var str="";
     for(var b=0;b<data.exams.length;b++){
-      str+=" "+data.exams[b].code+" "+data.exams[b].name+" "+data.exams[b].lecturer+" "+data.exams[b].datetime+" "+data.exams[b].location+" "+data.exams[b].duration+"<br>";
+      str+="<b>"+data.exams[b].code+" "+data.exams[b].name + "</b> <br>";
+      str+="<i>"+data.exams[b].lecturer+" "+data.exams[b].location + "</i> <br>";
+      str+=data.exams[b].datetime+" "+data.exams[b].duration+"<br><br>";
     }
     $('#Exams').html(str);
     //console.log(data);
   }
   function onEvents(data) {
-    var str="<h5>Yaklaşan Etkinlikler</h5>";
+    var str="";
     for(var b=0;b<data.events.length;b++){
-      str+=" "+data.events[b].datetime+" "+data.events[b].title+" "+data.events[b].location+"<br>";
+      str+="<b>"+data.events[b].datetime+"</b> "+data.events[b].title+" <i>"+data.events[b].location+"</i><br>";
     }
     $('#Events').html(str);
     //console.log(data);
   }
   function onWeather(data) {
-    var img = $('<img>');
+    var img = $('<img class="img-fluid">');
     img.attr('src', data.icon);
     $('#uptime').html("Güncellenme Zamanı: "+new Date().toLocaleString());
     $('#weather_forecast').html(data.text);
