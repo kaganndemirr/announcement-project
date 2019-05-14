@@ -19,16 +19,11 @@
 .container-fluid>.row {
   height: 100%;
 }
-/* Content Section */
-#content_section {
-  position: relative;
-}
 /* Slide */
 #mainSlide {
   width: 100%;
-  height: 80%;
-  top: 0;
-  position: absolute;
+  height: 80vh;
+  position: relative;
 }
 .slide-img {
     height: 100%;
@@ -41,12 +36,16 @@
 .carousel-data {
   margin: 0 auto;
   color: #dedede;
+  position: relative;
+  font-size: 1vw;
+  padding: 1%;
 }
 .carousel-caption {
   background: rgba(0, 0, 0, 0.3);
   width: 100%;
   bottom: 0;
   left: 0;
+  font-size: 1.5vw;
 }
 .ytplayer {
   width: 100%;
@@ -55,60 +54,48 @@
 /* Scroll Text */
 .scroll_text {
   position: relative;
-  height: 10em;
+  height: 100%;
   overflow: hidden;
   width: 100%;
 }
 #scroll_lefttext {
   overflow: hidden;
-  height: 20%;
+  position: relative;
+  height: 20vh;
   width: 100%;
-  bottom: 0;
-  position: absolute;
 }
 #Announcement {
   position: absolute;
   animation: scrollleft 15s linear infinite;
-  font-size: 2em;
-  height: 2em;
+  font-size: 10vh;
   white-space: nowrap;
-  width: 100%;
   overflow: visible;
   color: #9a161a;
 }
-/*Sidebar Scroll*/
+/*Sidebar*/
 .sidebar_section {
-  height: 12em;
+  height: 40vh;
+  text-align: center;
 }
-#Lectures {
+.sidebar_section p {
+  margin-bottom: 1vh;
+}
+#scroll_sidebar {
   position: absolute;
   animation: scrollup 15s linear infinite;
   width: 100%;
-  height: 100%;
-}
-#Exams {
-  position: absolute;
-  animation: scrollup 15s linear infinite;
-  width: 100%;
-  height: 100%;
-}
-#Events {
-  position: absolute;
-  animation: scrollup 15s linear infinite;
-  width: 100%;
-  height: 100%;
+  left: 0;
+  top: 0;
 }
 /*Bg Common*/
 .bg{
   background-repeat: no-repeat;
-  margin-bottom: 5px;
-  background-position: center;
+  background-size: 100%;
 }
 /* Common Text*/
 .text {
-  font-size: 1em;
+  font-size: 1vw;
   font-family: "Roboto";
-  margin: 10px;
   color: #0c5460;
   text-align: center;
   font-weight: normal;
@@ -116,12 +103,8 @@
   font-palette: normal;
 }
 /*Headers*/
-h5{
-  color: #2cc36b;
-  font-family: Roboto;
-  font-size: 2em;
-}
 h3{
   color: #2cc36b;
   font-family: Roboto;
+  font-size: 2vw;
 }
