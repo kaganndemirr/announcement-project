@@ -54,68 +54,74 @@
 }
 /* Scroll Text */
 .scroll_text {
-    position: relative;
-    height: 10em;
-    overflow: hidden;
-    width: 100%;
+  position: relative;
+  height: 10em;
+  overflow: hidden;
+  width: 100%;
 }
 #scroll_lefttext {
-    overflow: hidden;
-    height: 20%;
-    width: 100%;
-    bottom: 0;
-    position: absolute;
+  overflow: hidden;
+  height: 20%;
+  width: 100%;
+  bottom: 0;
+  position: absolute;
 }
 #Announcement {
-    position: absolute;
-    animation: scrollleft 15s linear infinite;
-    font-size: 2em;
-    height: 2em;
-    white-space: nowrap;
-    width: 100%;
-    overflow: visible;
+  position: absolute;
+  animation: scrollleft 15s linear infinite;
+  font-size: 2em;
+  height: 2em;
+  white-space: nowrap;
+  width: 100%;
+  overflow: visible;
+  color: #9a161a;
 }
 /*Sidebar Scroll*/
 .sidebar_section {
   height: 12em;
 }
 #Lectures {
-    position: absolute;
-    animation: scrollup 15s linear infinite;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  animation: scrollup 15s linear infinite;
+  width: 100%;
+  height: 100%;
 }
 #Exams {
-    position: absolute;
-    animation: scrollup 15s linear infinite;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  animation: scrollup 15s linear infinite;
+  width: 100%;
+  height: 100%;
 }
 #Events {
-    position: absolute;
-    animation: scrollup 15s linear infinite;
-    width: 100%;
-    height: 100%;
-}
-/* Common Text*/
-.text {
- font-size: 14px;
- font-family: "Roboto";
- margin: 10px;
- text-align: center;
- font-weight: normal;
- font-style: normal;
- font-palette: normal;
+  position: absolute;
+  animation: scrollup 15s linear infinite;
+  width: 100%;
+  height: 100%;
 }
 /*Bg Common*/
 .bg{
-    background-repeat: no-repeat;
-    margin-bottom: 5px;
-    background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 5px;
+  background-position: center;
 }
-/*Header*/
+/* Common Text*/
+.text {
+  font-size: 1em;
+  font-family: "Roboto";
+  margin: 10px;
+  color: #0c5460;
+  text-align: center;
+  font-weight: normal;
+  font-style: normal;
+  font-palette: normal;
+}
+/*Headers*/
 h5{
-    color: #2cc36b;
-    font-family: Roboto;
-    font-size: 1em;
+  color: #2cc36b;
+  font-family: Roboto;
+  font-size: 2em;
+}
+h3{
+  color: #2cc36b;
+  font-family: Roboto;
 }
