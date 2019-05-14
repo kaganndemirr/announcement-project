@@ -3,7 +3,7 @@ from django.views.generic import View
 from django.http import JsonResponse
 from django.utils.timezone import localtime
 
-from datetime import date
+from datetime import date, datetime
 from .models import Slide, Announcement, Event
 from .variables import ACTIVE
 
@@ -46,7 +46,7 @@ class AjaxEvents(View):
             for i in Event
                     .objects
                     .filter(department=request.user.department,
-                        date__date__gte=date.today())
+                        date__date__gte=datetime.utcnow().date())
                     .order_by('date').values()
         ]
         return JsonResponse({"events": list(data)})

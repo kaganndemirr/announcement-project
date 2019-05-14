@@ -4,12 +4,12 @@ from django.http import JsonResponse
 from django.conf import settings
 from django.utils.timezone import localtime
 
-from datetime import date
+from datetime import date, datetime
 from .models import Lecture, Exam, LectureSession
 
 class AjaxLectures(View):
     def get(self, request):
-        weekday = date.today().weekday()
+        weekday = datetime.utcnow().date().weekday()
         data = [
             {
                 'code': lec.l_code,
@@ -46,7 +46,7 @@ class AjaxExams(View):
             for i in Exam
                     .objects
                     .filter(lecture__department=request.user.department,
-                        e_date__date__gte=date.today())
+                        e_date__date__gte=datetime.utcnow().date())
                     .order_by('e_date')
         ]
         return JsonResponse({"exams": list(data)})
