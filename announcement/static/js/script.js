@@ -61,7 +61,7 @@ var tplSlide = $('#Lectures').html();//*/
     } else {
       window.slideContentReady = true;
     }
-    console.log(data);
+    //console.log(data);
   }
   function onAnnouncements(data) {
     $('#Announcement').text(data.announcements.join(' | '));
