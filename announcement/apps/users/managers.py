@@ -11,7 +11,7 @@ class UserManager(BaseUserManager):
         if not department:
             department = Department.objects.filter(d_code="-").first()
             if not department:
-                department = Department(d_code="-", name="Bölümsüz")
+                department = Department(d_code="-", name="Bolumsuz")
                 department.save()
 
         email = self.normalize_email(email)
