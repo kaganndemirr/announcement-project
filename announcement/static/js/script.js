@@ -116,12 +116,14 @@ var tplSlide = $('#slideItemTpl').html();
   function updateText() {
     $('#speed_text').html(speedFactorhorizontal + " saniyede bir yatay tur"+ "<br>"+speedFactorvertical+" saniyede bir dikey tur"+"<br>"+SLIDE_SHOW_INTERVAL/1000+" saniyede slayt geçiş hızı"+"<br>");
   }
+  loadSettings();
   updateText();
 
   $("#scroll_speeduph").click(function() {
     if (speedFactorhorizontal > 1) {
       speedFactorhorizontal --;
       updateText();
+      saveSettings();
     }
     $("#Announcement").css('animation', "scrollleft " + speedFactorhorizontal + "s linear infinite");
   });
@@ -129,6 +131,7 @@ var tplSlide = $('#slideItemTpl').html();
   $("#scroll_speeddownh").click(function() {
     speedFactorhorizontal ++;
     updateText();
+    saveSettings();
     $("#Announcement").css('animation', "scrollleft " + speedFactorhorizontal + "s linear infinite");
   });
 
@@ -136,6 +139,7 @@ var tplSlide = $('#slideItemTpl').html();
     if (speedFactorvertical > 1) {
       speedFactorvertical --;
       updateText();
+      saveSettings();
     }
     $("#Lectures").css('animation', "scrollup " + speedFactorvertical + "s linear infinite");
     $("#Exams").css('animation', "scrollup " + speedFactorvertical + "s linear infinite");
@@ -145,6 +149,7 @@ var tplSlide = $('#slideItemTpl').html();
   $("#scroll_speeddownv").click(function() {
     speedFactorvertical ++;
     updateText();
+    saveSettings();
     $("#Lectures").css('animation', "scrollup " + speedFactorvertical + "s linear infinite");
     $("#Exams").css('animation', "scrollup " + speedFactorvertical + "s linear infinite");
     $("#Events").css('animation', "scrollup " + speedFactorvertical + "s linear infinite");
@@ -154,14 +159,38 @@ var tplSlide = $('#slideItemTpl').html();
     if (SLIDE_SHOW_INTERVAL > 1000) {
       SLIDE_SHOW_INTERVAL -=1000;
       updateText();
+      saveSettings();
     }
   });
 
   $("#slidespeeddown").click(function() {
     SLIDE_SHOW_INTERVAL +=1000;
     updateText();
+    saveSettings();
   });
 
+  function loadSettings() {
+    var settings = localStorage.getItem('settings');
+    if (settings) {
+      settings = JSON.parse(settings);
+      speedFactorhorizontal = settings.speedFactorhorizontal;
+      speedFactorvertical = settings.speedFactorvertical;
+      SLIDE_SHOW_INTERVAL = settings.SLIDE_SHOW_INTERVAL;
+      $("#Announcement").css('animation', "scrollleft " + speedFactorhorizontal + "s linear infinite");
+      $("#Lectures").css('animation', "scrollup " + speedFactorvertical + "s linear infinite");
+      $("#Exams").css('animation', "scrollup " + speedFactorvertical + "s linear infinite");
+      $("#Events").css('animation', "scrollup " + speedFactorvertical + "s linear infinite");
+    }
+  }
+
+  function saveSettings() {
+    var settings = {
+      speedFactorhorizontal: speedFactorhorizontal,
+      speedFactorvertical: speedFactorvertical,
+      SLIDE_SHOW_INTERVAL: SLIDE_SHOW_INTERVAL,
+    };
+    localStorage.setItem('settings', JSON.stringify(settings));
+  }
 })(window);
 
 // Settings
