@@ -16,16 +16,28 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 
-from announcement.views import IndexView, DocumentationView
+from announcement import views
+from classes.views import AjaxLectures, AjaxExams
+from departments.views import AjaxSlides, AjaxAnnouncement, AjaxEvents
+from weather.views import AjaxWeather
 
 urlpatterns = [
-    # Landing
-    re_path('^$', IndexView.as_view(), name='index'),
+    # Pages
+    path('', views.MainView.as_view(), name='main'),
+    re_path('^index/$', views.IndexView.as_view(), name='index'),
+
+    # Ajax
+    path('ajax/slides', AjaxSlides.as_view(), name='slides'),
+    path('ajax/announcements', AjaxAnnouncement.as_view(), name='announcements'),
+    path('ajax/lectures', AjaxLectures.as_view(), name='lectures'),
+    path('ajax/exams', AjaxExams.as_view(), name='exams'),
+    path('ajax/events', AjaxEvents.as_view(), name='events'),
+    path('ajax/weather', AjaxWeather.as_view(), name='weather'),
 
     # Admin
     path('admin/', admin.site.urls),
 
     # Documentation
-    re_path('^documentation/$', DocumentationView.as_view(), name='documentation'),
-    re_path('^documentation/(?P<path>.*)$', DocumentationView.as_view(), name='documentation'),
+    re_path('^documentation/$', views.DocumentationView.as_view(), name='documentation'),
+    re_path('^documentation/(?P<path>.*)$', views.DocumentationView.as_view(), name='documentation'),
 ]

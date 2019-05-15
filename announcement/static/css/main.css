@@ -1,0 +1,110 @@
+/* Keyframes */
+@keyframes scrollleft {
+ 0%   {
+ transform: translateX(100%);
+ }
+ 100% {
+ transform: translateX(-100%);
+ }
+}
+@keyframes scrollup {
+ 0%   {
+ transform: translateY(100%);
+ }
+ 100% {
+ transform: translateY(-100%);
+ }
+}
+/* Container */
+.container-fluid>.row {
+  height: 100%;
+}
+/* Slide */
+#mainSlide {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+}
+.slide-img {
+    height: 100%;
+}
+.carousel-item {
+  background: #333;
+  height: 100%;
+  text-align: center;
+}
+.carousel-data {
+  margin: 0 auto;
+  color: #dedede;
+  position: relative;
+  font-size: 1vw;
+  padding: 1%;
+}
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  font-size: 1.5vw;
+}
+.ytplayer {
+  width: 100%;
+  height: 100%;
+}
+/* Scroll Text */
+.scroll_text {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+#scroll_lefttext {
+  overflow: hidden;
+  position: relative;
+  height: 20vh;
+  width: 100%;
+}
+#Announcement {
+  position: absolute;
+  animation: scrollleft 15s linear infinite;
+  font-size: 10vh;
+  white-space: nowrap;
+  overflow: visible;
+  color: #9a161a;
+}
+/*Sidebar*/
+.sidebar_section {
+  height: 40vh;
+  text-align: center;
+}
+.sidebar_section p {
+  margin-bottom: 1vh;
+}
+#scroll_sidebar {
+  position: absolute;
+  animation: scrollup 15s linear infinite;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+/*Bg Common*/
+.bg{
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+/* Common Text*/
+.text {
+  font-size: 1vw;
+  font-family: "Roboto";
+  color: #0c5460;
+  text-align: center;
+  font-weight: normal;
+  font-style: normal;
+  font-palette: normal;
+}
+/*Headers*/
+h3{
+  color: #2cc36b;
+  font-family: Roboto;
+  font-size: 2vw;
+}

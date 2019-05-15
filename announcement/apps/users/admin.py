@@ -33,10 +33,17 @@ class UserAdmin(_UserAdmin):
     )
 
     list_display = (
-        'first_name', 'last_name', 'email', 'department',
+        'first_name', 'last_name', 'email', 'department', 'is_staff',
         'is_active', 'is_verified', 'is_superuser'
     )
 
-    list_filter = ('is_active', 'is_verified', 'is_superuser')
+    list_filter = ('is_staff', 'is_active', 'is_verified', 'is_superuser')
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('first_name', 'last_name')
+
+
+    def get_queryset(self, request):
+        qs = super(UserAdmin, self).get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        return qs.filter(department=request.user.department)

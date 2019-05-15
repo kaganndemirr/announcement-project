@@ -1,1 +1,1 @@
-from announcement.settings.local import *
+from announcement.settings.base import *
