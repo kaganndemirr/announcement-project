@@ -9,7 +9,7 @@ from .models import Lecture, Exam, LectureSession
 
 class AjaxLectures(View):
     def get(self, request):
-        weekday = datetime.utcnow().date().weekday()
+        weekday = date.today().weekday()
         data = [
             {
                 'code': lec.l_code,
@@ -27,7 +27,7 @@ class AjaxLectures(View):
                     .objects
                     .filter(lecture=lec)
                     .order_by('s_date')
-            if ses.s_date.weekday() == weekday
+            if localtime(ses.s_date).weekday() == weekday
         ]
         return JsonResponse({"lectures": list(data)})
 
